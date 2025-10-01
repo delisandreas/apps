@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <title>Click the Ball Game</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+    }
+    h1 {
+      color: #333;
+    }
+    #score {
+      font-size: 24px;
+      margin: 20px;
+    }
+    #ball {
+      width: 80px;
+      height: 80px;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎯 Πάτησε τη Μπάλα!</h1>
+  <div id="score">Score: 0</div>
+  <div id="ball"></div>
+
+  <script>
+    let score = 0;
+    const ball = document.getElementById("ball");
+    const scoreDisplay = document.getElementById("score");
+
+    // Μετακίνησε τη μπάλα σε τυχαία θέση
+    function moveBall() {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
+      ball.style.left = x + "px";
+      ball.style.top = y + "px";
+    }
+
+    // Όταν γίνει κλικ στη μπάλα
+    ball.addEventListener("click", () => {
+      score++;
+      scoreDisplay.textContent = "Score: " + score;
+      moveBall();
+    });
+
+    // Αρχική θέση μπάλας
+    moveBall();
+  </script>
+</body>
+</html>
